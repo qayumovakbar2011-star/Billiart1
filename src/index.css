@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ==========================================================================
+   1. UMUMIY VA ASOSIY STRUKTURA (LAYOUT)
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif !important;
+}
+
+body {
+  background-color: #080c14 !important;
+  color: #f3f4f6 !important;
+  overflow-x: hidden;
+}
+
+/* Saytni uchta asosiy ustunga bo'lamiz: Sidebar | Asosiy Kontent | O'ng Panel */
+.app-container {
+  display: grid !important;
+  grid-template-columns: 240px 1fr 320px !important; /* Sidebar, Stollar va O'ng tarafdagi doimiy panel */
+  min-height: 100vh !important;
+  background-color: #080c14 !important;
+}
+
+/* ==========================================================================
+   2. CHAP TARAF: YON MENYU (SIDEBAR)
+   ========================================================================== */
+.sidebar {
+  background-color: #0c101b !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+  padding: 24px 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 24px !important;
+}
+
+.sidebar-logo {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  letter-spacing: 0.5px !important;
+}
+
+.sidebar nav a {
+  display: flex !important;
+  align-items: center !important;
+  padding: 12px 16px !important;
+  color: #7e8494 !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.sidebar nav a[href="/"], .sidebar nav a.active {
+  background-color: #164e33 !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   3. MARKAZIY QISM: DASHBOARD VA STOLLAR GRIDI
+   ========================================================================== */
+.content {
+  padding: 24px !important;
+  background-color: #080c14 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+}
+
+/* Yuqoridagi 4 ta statistika bloklari */
+.content > .m-3 > .d-flex.gap-3:not(.flex-wrap) {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 14px !important;
+  margin: 0 !important;
+}
+
+.content > .m-3 > .d-flex.gap-3:not(.flex-wrap) > .border {
+  background-color: #111622 !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 10px !important;
+  padding: 14px !important;
+  width: 100% !important;
+}
+
+.content > .m-3 > .d-flex.gap-3:not(.flex-wrap) > .border center {
+  text-align: left !important;
+}
+
+/* Stollar turadigan joy: Bir qatorda 4 tadan chiroyli joylashadi */
+.d-flex.flex-wrap.gap-3 {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 14px !important;
+}
+
+.d-flex.flex-wrap.gap-3 > .container.border {
+  width: 100% !important;
+  background-color: #111622 !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 12px !important;
+  padding: 14px !important;
+  margin: 0 !important;
+}
+
+.product-card img {
+  width: 100% !important;
+  height: 110px !important;
+  object-fit: cover !important;
+  border-radius: 8px !important;
+}
+
+.product-card .btn-success {
+  background-color: #164e33 !important;
+  border: none !important;
+}
+
+.product-card .btn-danger {
+  background-color: #7f1d1d !important;
+  border: none !important;
+}
+
+/* ==========================================================================
+   4. O'NG TARAF: DOIMIY HISOB-KITOB PANELI (MODAL EMAS!)
+   ========================================================================== */
+/* Ekranni to'sib turgan modal effektini butunlay yo'qotamiz */
+div[style*="position: fixed"]:has(h3:contains("Hisob-kitob")),
+div[style*="position: fixed"]:has(div:contains("Jami to‘lov")),
+div[style*="position: fixed"]:has(div:contains("O‘nyagan vaqt")) {
+  position: static !important; /* Modal zanjiridan uzish */
+  grid-column: 3 / 4 !important; /* O'ng tarafdagi maxsus ustunga joylash */
+  width: 320px !important;
+  height: 100vh !important;
+  background: #0c101b !important; /* Birinchi rasmdagi to'q fon color */
+  border-left: 1px solid rgba(255, 255, 255, 0.05) !important;
+  padding: 24px 16px !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  z-index: 1 !important;
+}
+
+/* O'ng panel ichki konteyneri */
+div[style*="position: fixed"]:has(h3:contains("Hisob-kitob")) > div,
+div[style*="position: fixed"]:has(div:contains("Jami to‘lov")) > div {
+  width: 100% !important;
+  height: 100% !important;
+  background: transparent !important; /* Modal foni o'chiriladi */
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* "Hozirgi sessiya / Hisob-kitob" Sarlavhasi */
+div[style*="position: fixed"] h3 {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  text-shadow: none !important;
+  margin-bottom: 20px !important;
+}
+
+/* Ma'lumotlar qatorlari (Stol, vaqt, narx) */
+div[style*="position: fixed"] div, 
+div[style*="position: fixed"] p {
+  font-size: 13px !important;
+  color: #7e8494 !important;
+  background: transparent !important;
+}
+
+/* Jami summa qismi */
+div[style*="position: fixed"] h3[style*="color"], 
+div[style*="position: fixed"] .text-success {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  text-shadow: none !important;
+  margin-top: auto !important; /* Elementlarni pastga taranglab itaradi */
+  padding-top: 16px !important;
+}
+
+/* "Sessiyani to'xtatish / Yopish" tugmasi -> To'liq rasmdagi Qizil tugmaga aylanadi */
+div[style*="position: fixed"] button,
+div[style*="position: fixed"] .btn-primary {
+  background: #7f1d1d !important; /* Rasmdagi to'q qizil stop rangi */
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 12px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  width: 100% !important;
+  margin-top: 12px !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+}
+
+div[style*="position: fixed"] button:hover {
+  background: #991b1b !important;
+}
+
+/* ==========================================================================
+   5. BAR MODALI (AVVALGI HOLATIDA MARKAZDA QOLISHI UCHUN)
+   ========================================================================== */
+div[style*="position: fixed"]:has(h4:contains("Bar")),
+div[style*="position: fixed"]:has(input[placeholder*="mahsulot"]) {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(5px) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  z-index: 9999 !important;
+}
+
+div[style*="position: fixed"]:has(h4:contains("Bar")) > div {
+  width: 460px !important;
+  background-color: #111622 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 14px !important;
+  padding: 24px !important;
+}
