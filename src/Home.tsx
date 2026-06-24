@@ -222,9 +222,9 @@ const Home = () => {
 
       </div>
 
-      <div className="d-flex gap-3">
+      <div className="status-grid">
 
-        <div className="border rounded p-2 w-25">
+        <div className="border rounded">
 
           <center><h4>Jami Stollar</h4></center>
 
@@ -232,7 +232,7 @@ const Home = () => {
 
         </div>
 
-        <div className="border rounded p-2 w-25">
+        <div className="border rounded">
 
           <center><h4>Bo'sh Stollar</h4></center>
 
@@ -240,7 +240,7 @@ const Home = () => {
 
         </div>
 
-        <div className="border rounded p-2 w-25">
+        <div className="border rounded">
 
           <center><h4>Band Stollar</h4></center>
 
@@ -248,7 +248,7 @@ const Home = () => {
 
         </div>
 
-        <div className="border rounded p-2 w-25">
+        <div className="border rounded">
 
           <center><h4>Bugungi Daromad</h4></center>
 

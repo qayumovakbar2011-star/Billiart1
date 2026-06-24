@@ -362,3 +362,246 @@ button:not(.menu-toggle):not(.modal-close) {
 .parent {
     overflow: visible !important;
 }
+
+/* ==========================================================================
+   BILYARD DASHBOARD FINAL RESPONSIVE KOD (MUTLOQ TUZATILGAN)
+   ========================================================================== */
+
+/* -----------------------------------------
+   1. KOMPYUTER VARIANTI (769px dan katta ekranlar)
+----------------------------------------- */
+@media screen and (min-width: 769px) {
+    
+    /* Status kartalari (Tepada 4 ta yonma-yon) */
+    .status-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 20px !important;
+        width: 100% !important;
+        margin-bottom: 40px !important;
+    }
+
+    /* Bilyard stollari joylashgan ota konteyner (YONMA-YON GRID REJIM) */
+    .stollar-list, 
+    .stollar-konteyner-klass-nomi,
+    div:has(> .border.rounded [src*="billiard"]),
+    div:has(> .border.rounded img) {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important; /* Ekran kengligiga qarab yonma-yon chizadi */
+        gap: 25px !important;
+        width: 100% !important;
+        position: relative !important;
+    }
+
+    /* Har bir stol blokining o'zi (Absolute rejimidan tozalash) */
+    .stollar-list .border.rounded,
+    .stollar-konteyner-klass-nomi .border.rounded,
+    div:has(> .border.rounded [src*="billiard"]) > .border.rounded,
+    div:has(> .border.rounded img) > .border.rounded {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        
+        display: flex !important;
+        flex-direction: column !important; /* Blok ichidagi elementlar (Ismi, rasm, taymer) ustma-ust turadi */
+        align-items: center !important;
+        padding: 25px !important;
+    }
+}
+
+/* -----------------------------------------
+   2. MOBIL VARIANTI (768px va undan kichik ekranlar)
+----------------------------------------- */
+@media screen and (max-width: 768px) {
+    
+    body {
+        padding: 12px !important;
+    }
+
+    /* Status kartalari (Mobilda 1 qatorga 2 tadan chiroyli) */
+    .status-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        width: 100% !important;
+        margin-bottom: 30px !important;
+    }
+
+    .status-grid .border.rounded {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        height: 110px !important;
+        padding: 10px 5px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* Status ichidagi matnlar qisqarishi uchun */
+    .status-grid .border.rounded h3,
+    .status-grid .border.rounded h4,
+    .status-grid .border.rounded p,
+    .status-grid .border.rounded div {
+        font-size: 13px !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        text-align: center !important;
+    }
+
+    /* Bilyard stollari (Mobilda qat'iy USTUN shaklida pastma-past tushadi) */
+    .stollar-list,
+    .stollar-konteyner-klass-nomi,
+    div:has(> .border.rounded [src*="billiard"]),
+    div:has(> .border.rounded img) {
+        display: flex !important;
+        flex-direction: column !important; /* Majburiy ustma-ust qilish */
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    .stollar-list .border.rounded,
+    .stollar-konteyner-klass-nomi .border.rounded,
+    div:has(> .border.rounded [src*="billiard"]) > .border.rounded,
+    div:has(> .border.rounded img) > .border.rounded {
+        position: relative !important;
+        left: 0 !important;
+        top: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 20px !important;
+        
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+}
+
+/* -----------------------------------------
+   3. HAMMA REJIMLAR UCHUN UMUMIY RASYMLAR SOZLAMASI
+----------------------------------------- */
+.stollar-list .border.rounded img,
+.stollar-konteyner-klass-nomi .border.rounded img,
+.border.rounded img[src*="billiard"],
+.border.rounded img {
+    width: 120px !important; /* Yashil stol rasmini normallashtirish */
+    height: auto !important;
+    margin: 15px 0 !important;
+    display: block !important;
+    position: static !important;
+}
+
+/* ==========================================================================
+   STOL KARTALARINI ENINI KICHRAYTIRISH (IXCHAM REJIM)
+   ========================================================================== */
+
+/* 1. KOMPYUTER VARIANTI UCHUN (Karta enini biroz maydalashtiramiz) */
+@media screen and (min-width: 769px) {
+    .stollar-list, 
+    .stollar-konteyner-klass-nomi,
+    div:has(> .border.rounded img) {
+        /* minmax(240px, 1fr) qilish orqali kartalar enini maydaroq qilamiz */
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important; 
+        gap: 20px !important;
+    }
+
+    .stollar-list .border.rounded,
+    div:has(> .border.rounded img) > .border.rounded {
+        max-width: 280px !important; /* Maksimal kengligi chegaralandi */
+        padding: 18px !important;    /* Ichki bo'shliq ham ixchamlashtirildi */
+    }
+}
+
+/* 2. MOBIL VARIANTI UCHUN (Telefonda ham karta o'ta keng bo'lib ketmasligi uchun) */
+@media screen and (max-width: 768px) {
+    .stollar-list .border.rounded,
+    .stollar-konteyner-klass-nomi .border.rounded,
+    div:has(> .border.rounded img) > .border.rounded {
+        width: 70% !important;        /* Telefon enini 100% emas, 90% qismini egallaydi */
+        max-width: 300px !important;  /* Maksimal eni cheklandi */
+        margin: 0 auto 15px auto !important; /* Kartani ekranning o'rtasiga joylaydi */
+        padding: 15px !important;
+    }
+}
+
+/* 3. KARTA ICHIDAGI RASM VA TUGMANI HAM MOSLASH */
+.stollar-list .border.rounded img,
+.border.rounded img {
+    width: 100px !important;  /* Yashil stol rasmini ham biroz maydalashtirdik */
+    height: auto !important;
+}
+
+.stollar-list .border.rounded button,
+.border.rounded .btn,
+.border.rounded button {
+    max-width: 180px !important; /* START tugmasi ham juda cho'zilib ketmaydi */
+    margin: 0 auto !important;
+}
+
+/* ==========================================================================
+   ADMIN SAHIFASI (SAVE MODAL) RESPONSIVE STILLARI
+   ========================================================================== */
+
+/* 1. KOMPYUTER VARIANTI (Katta ekranlar uchun mukammallashtirish) */
+@media screen and (min-width: 769px) {
+    /* w-25 klassi bor ota divni markazga to'g'rilash va dizayn berish */
+    div.w-25.border.rounded {
+        max-width: 350px !important; /* Karta o'ta mayda yoki o'ta keng bo'lmaydi */
+        background-color: #212529 !important; /* Orqa fonni to'q rang qilish (agar loyihangiz to'q rangda bo'lsa) */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+        margin-top: 50px !important; /* Tepadan biroz joy tashlaydi */
+        padding: 25px !important;
+    }
+
+    /* Input va tugmalarni chiroyli qilish */
+    div.w-25.border.rounded .form-control {
+        height: 45px !important;
+        font-size: 15px !important;
+    }
+
+    div.w-25.border.rounded .btn-primary {
+        height: 45px !important;
+        font-size: 16px !important;
+        font-weight: bold !important;
+    }
+}
+
+/* 2. MOBIL VARIANTI (Telefonlarda siqilib qolishini mutloq yo'qotish) */
+@media screen and (max-width: 768px) {
+    
+    /* Telefon ekranida w-25 klassini majburlab 90% eniga ochamiz */
+    div.w-25.border.rounded {
+        width: 90% !important;        /* 25% emas, ekran enining 90% qismini oladi */
+        max-width: 320px !important;  /* Lekin 320px dan oshib ketmaydi (ixcham turadi) */
+        margin: 40px auto !important; /* Ekranning qat'iy o'rtasida turadi */
+        padding: 20px !important;      /* Ichki havo (padding) */
+        background-color: #2a2d32 !important; /* To'q fon */
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    /* Input maydoni telefonda chiroyli sig'ishi uchun */
+    div.w-25.border.rounded .form-control {
+        width: 100% !important;
+        height: 45px !important;
+        font-size: 14px !important;
+        text-align: center !important; /* Input ichidagi placeholder o'rtada turadi */
+        margin-bottom: 15px !important;
+    }
+
+    /* SAVE tugmasi telefonda to'liq va tekis chiqishi uchun */
+    div.w-25.border.rounded .btn-primary {
+        width: 100% !important;       /* Tugmani ham enini to'liq qilamiz, bosishga qulay bo'ladi */
+        height: 45px !important;
+        font-size: 16px !important;
+        text-transform: uppercase !important; /* SAVE so'zini katta harf qiladi */
+        letter-spacing: 1px !important;
+    }
+}
