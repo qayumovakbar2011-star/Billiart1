@@ -12,11 +12,11 @@ const Admin = () => {
 
 
 
-    const [users, setUsers] = useState([]);
+    const [_users, setUsers] = useState([]);
 
     const [name, setName] = useState("");
 
-    const [price, setPrice] = useState("");
+    const [price, _setPrice] = useState("");
 
     const navigate = useNavigate();
 
