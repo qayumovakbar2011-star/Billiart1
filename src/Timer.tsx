@@ -32,7 +32,7 @@ const Timer = ({
 
     const [cost, setCost] = useState(0);
 
-    const [users1, setUsers1] = useState([]);
+    const [_users1, setUsers1] = useState([]);
 
     const [totalTime, setTotalTime] = useState(0);
 

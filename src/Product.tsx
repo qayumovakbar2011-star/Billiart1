@@ -16,7 +16,7 @@ const Product = () => {
 
     const [price, setPrice] = useState("");
 
-    const [users, setUsers] = useState([]);
+    const [_users, setUsers] = useState([]);
 
     const navigate = useNavigate();
 
