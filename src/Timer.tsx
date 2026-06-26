@@ -382,7 +382,7 @@ const Timer = ({
 
                             width: "380px",
 
-                            maxHeight: "80vh",
+                            maxHeight: "60vh",
 
                             overflowY: "auto",
 

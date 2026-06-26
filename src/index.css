@@ -500,50 +500,139 @@ button:not(.menu-toggle):not(.modal-close) {
 }
 
 /* ==========================================================================
-   STOL KARTALARINI ENINI KICHRAYTIRISH (IXCHAM REJIM)
+   BILYARD DASHBOARD FINAL RESPONSIVE KOD (MUTLOQ TUZATILGAN)
    ========================================================================== */
 
-/* 1. KOMPYUTER VARIANTI UCHUN (Karta enini biroz maydalashtiramiz) */
+/* -----------------------------------------
+   1. KOMPYUTER VARIANTI (769px dan katta ekranlar)
+----------------------------------------- */
 @media screen and (min-width: 769px) {
+    
+    /* Status kartalari (Tepada 4 ta yonma-yon) */
+    .status-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 20px !important;
+        width: 100% !important;
+        margin-bottom: 40px !important;
+    }
+
+    /* Bilyard stollari joylashgan ota konteyner (YONMA-YON GRID REJIM) */
     .stollar-list, 
     .stollar-konteyner-klass-nomi,
+    div:has(> .border.rounded [src*="billiard"]),
     div:has(> .border.rounded img) {
-        /* minmax(240px, 1fr) qilish orqali kartalar enini maydaroq qilamiz */
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important; 
-        gap: 20px !important;
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important; /* Ekran kengligiga qarab yonma-yon chizadi */
+        gap: 25px !important;
+        width: 100% !important;
+        position: relative !important;
     }
 
-    .stollar-list .border.rounded,
-    div:has(> .border.rounded img) > .border.rounded {
-        max-width: 280px !important; /* Maksimal kengligi chegaralandi */
-        padding: 18px !important;    /* Ichki bo'shliq ham ixchamlashtirildi */
-    }
-}
-
-/* 2. MOBIL VARIANTI UCHUN (Telefonda ham karta o'ta keng bo'lib ketmasligi uchun) */
-@media screen and (max-width: 768px) {
+    /* Har bir stol blokining o'zi (Absolute rejimidan tozalash) */
     .stollar-list .border.rounded,
     .stollar-konteyner-klass-nomi .border.rounded,
+    div:has(> .border.rounded [src*="billiard"]) > .border.rounded,
     div:has(> .border.rounded img) > .border.rounded {
-        width: 70% !important;        /* Telefon enini 100% emas, 90% qismini egallaydi */
-        max-width: 300px !important;  /* Maksimal eni cheklandi */
-        margin: 0 auto 15px auto !important; /* Kartani ekranning o'rtasiga joylaydi */
-        padding: 15px !important;
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        
+        display: flex !important;
+        flex-direction: column !important; /* Blok ichidagi elementlar (Ismi, rasm, taymer) ustma-ust turadi */
+        align-items: center !important;
+        padding: 25px !important;
     }
 }
 
-/* 3. KARTA ICHIDAGI RASM VA TUGMANI HAM MOSLASH */
-.stollar-list .border.rounded img,
-.border.rounded img {
-    width: 100px !important;  /* Yashil stol rasmini ham biroz maydalashtirdik */
-    height: auto !important;
+/* -----------------------------------------
+   2. MOBIL VARIANTI (768px va undan kichik ekranlar)
+----------------------------------------- */
+@media screen and (max-width: 768px) {
+    
+    body {
+        padding: 12px !important;
+    }
+
+    /* Status kartalari (Mobilda 1 qatorga 2 tadan chiroyli) */
+    .status-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        width: 100% !important;
+        margin-bottom: 30px !important;
+    }
+
+    .status-grid .border.rounded {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        height: 110px !important;
+        padding: 10px 5px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* Status ichidagi matnlar qisqarishi uchun */
+    .status-grid .border.rounded h3,
+    .status-grid .border.rounded h4,
+    .status-grid .border.rounded p,
+    .status-grid .border.rounded div {
+        font-size: 13px !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        text-align: center !important;
+    }
+
+    /* Bilyard stollari (Mobilda qat'iy USTUN shaklida pastma-past tushadi) */
+    .stollar-list,
+    .stollar-konteyner-klass-nomi,
+    div:has(> .border.rounded [src*="billiard"]),
+    div:has(> .border.rounded img) {
+        display: flex !important;
+        flex-direction: column !important; /* Majburiy ustma-ust qilish */
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    .stollar-list .border.rounded,
+    .stollar-konteyner-klass-nomi .border.rounded,
+    div:has(> .border.rounded [src*="billiard"]) > .border.rounded,
+    div:has(> .border.rounded img) > .border.rounded {
+        position: relative !important;
+        left: 0 !important;
+        top: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 20px !important;
+        
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
 }
 
-.stollar-list .border.rounded button,
-.border.rounded .btn,
-.border.rounded button {
-    max-width: 180px !important; /* START tugmasi ham juda cho'zilib ketmaydi */
-    margin: 0 auto !important;
+/* -----------------------------------------
+   3. HAMMA REJIMLAR UCHUN UMUMIY RASYMLAR SOZLAMASI
+----------------------------------------- */
+.stollar-list .border.rounded img,
+.stollar-konteyner-klass-nomi .border.rounded img,
+.border.rounded img[src*="billiard"],
+.border.rounded img {
+    width: 120px !important; /* Yashil stol rasmini normallashtirish */
+    height: auto !important;
+    margin: 15px 0 !important;
+    display: block !important;
+    position: static !important;
 }
 
 /* ==========================================================================
